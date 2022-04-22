@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "7214eef4-856a-4df0-8ceb-b60182cf82e4",
+		"name": "BOT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Conceptos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/conceptos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"conceptos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Concepto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " { \r\n        \"numero_concepto\": 11,\r\n        \"nombre_concepto\": \"Prueba crear\",\r\n        \"contenido_concepto\": null,\r\n        \"unidad\": \"Diseño de método\"\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8888/conceptos/crear",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"conceptos",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Concepto",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/conceptos/eliminar9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"conceptos",
+						"eliminar9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Concepto",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id_concepto\": 10,\r\n        \"nombre_concepto\": \"Actualizado\",\r\n        \"contenido_concepto\": \"ver1\",\r\n        \"unidad\": \"Diseño de métodos\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8888/conceptos/actualizar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"conceptos",
+						"actualizar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validar respuestas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/cuestionario/pregunta1/respuesta2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"cuestionario",
+						"pregunta1",
+						"respuesta2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener preguntas (ID)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/cuestionario/pregunta1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"cuestionario",
+						"pregunta1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cuestionario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/cuestionario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"cuestionario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reporte PDF",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8888/generar/reporte",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"generar",
+						"reporte"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,69 @@
+use adadb;
+
+CREATE TABLE if not exists db_conceptos (
+    id_concepto int auto_increment PRIMARY key, 
+    nombre_concepto varchar(50),
+    contenido_concepto longtext,
+    unidad varchar(50)
+);
+
+CREATE TABLE if not exists db_preguntas (
+    id_pregunta int PRIMARY key auto_increment,
+    contenido_pregunta varchar(255) not null,
+    id_concepto int not null,
+    FOREIGN KEY (id_concepto) REFERENCES db_conceptos (id_concepto)
+);
+
+CREATE TABLE if not exists db_respuestas (
+    id_respuesta int PRIMARY key auto_increment,
+    contenido_respuestas varchar(255) not null,
+    id_pregunta int not null,
+    es_correcta Boolean not null,
+    FOREIGN KEY (id_pregunta) REFERENCES db_preguntas (id_pregunta)
+);
+
+insert into db_conceptos ( nombre_concepto, contenido_concepto, unidad )
+	values 
+		('MODIFICADORES DE ACCESO','Existen cuatro tipos de modificadores: PUBLIC (permite acceder al elemento desde cualquier clase), PRIVADO (especifica que los elementos que lo utilizan solo pueden ser accedidos desde la clase en la que se encuentran), PROTECTED (los elementos sólo pueden ser accedidos desde su propio paquete y DEFAULT (el elemento solo puede ser accedido desde las clases que pertenecen al mismo paquete).', 'Diseño de métodos'),
+        ('ESPECIFICADORES OPCIONALES','A diferencia de los modificadores de acceso, se pueden tener varios especificadores en el mismo método. Se pueden especificar en cualquier orden, y como son opcionales, puedes no tener ninguno de ellos. Lo que significa que se puede tener cero o más de uno en la declaración del método.', 'Diseño de métodos'),
+        ('TIPO DE RETORNO','El siguiente elemento a la hora de declarar un método es el tipo de retorno. El tipo de retorno, puede ser un dato String o int. Si no hay tipo de retorno se utiliza la palabra clave VOID (sin contenido). No se puede omitir el tipo de retorno.', 'Diseño de métodos'),
+        ('NOMBRE DEL MÉTODO','Los nombres de los métodos sólo pueden contener letras, números, $ o _.  El primer carácter no puede ser un numero y las palabras reservadas no están permitidas. El nombre del método debe ubicarse después del tipo de retorno.', 'Diseño de métodos'),
+        ('LISTA DE PARÁMETROS ','Si bien, la lista de parámetros es necesaria, no tiene por qué contener ningún parámetro.Es decir, que puede tener un par de paréntesis vacíos después del nombre del método. Si tiene dos o más parámetros, estos se separan mediante una coma.', 'Diseño de métodos'),
+        ('LISTA DE EXCEPCIONES OPCIONALES ','El código puede indicar que existe algún error, mediante el lanzamiento de una excepción. Estas son opcionales y pueden enumerarse tanto como se quiera, siempre que se separen mediante una coma.', 'Diseño de métodos'),
+        ('CUERPO DEL MÉTODO ','El cuerpo de un método es un bloque de código. Está compuesto por llaves que contienen cero o más de una declaración.', 'Diseño de métodos');
+
+select * from db_conceptos dc ;
+
+insert  into db_preguntas (contenido_pregunta, id_concepto)
+values
+('¿Cuál de los siguientes modificadores de acceso es erróneo?', 1),
+('¿Cuál de los siguientes ejemplos esta expresado correctamente?', 2),
+('¿Cuál de los siguientes ejemplos esta expresado correctamente?', 3),
+('¿Cuál de los siguientes nombres de métodos esta expresado correctamente según la definición?', 4),
+('¿Qué opción de parámetros esta expresada correctamente?', 5),
+('Si quiero indicar más de una excepción, ¿cuál sería la forma correcta de hacerlo?', 6),
+('¿Cuál de las siguientes opciones pertenece a un cuerpo de método válido?', 7);
+
+select * from db_preguntas dp ;
+
+insert  into db_respuestas (contenido_respuestas, id_pregunta, es_correcta)
+values
+('1)  public void walk1() {}', 1, true),
+('2)  default void walk2() {}', 1, false),
+('1)  public final static void walk4() {}', 2, true),
+('2)  public modifier void walk5() {} ', 2, false),
+('1)  public String walk3() { return "";', 3, true),
+('2)  public String walk4() {} ', 3, false),
+('1)  public void walk1() {}', 4, true),
+('2)  public void 2walk() {} ', 4, false),
+('1)  public void walk5(int a, int b) {}', 5, true),
+('2)  public void walk4(int a; int b) {} ', 5, false),
+('1)  IllegalArgumentException, InterruptedException {}', 6, true),
+('2)  (IllegalArgumentException).InterruptedException {}', 6, false),
+('1)  public void walk1() {}', 7, true),
+('2)  public void walk2;', 7, false);
+
+
+
+
+select *from db_respuestas dr ;
